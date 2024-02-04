@@ -2,7 +2,7 @@ import User from '../Models/user.model.js'
 import bcryptjs from 'bcryptjs';
 // import { nextTick } from 'process';
 import {errorHandler} from '../utils/error.js'
-import { Jwt } from 'jsonwebtoken';
+import  Jwt  from 'jsonwebtoken';
 
 export const signup=async(req,res,next)=>{
     const {username,email,password}=req.body;
@@ -48,7 +48,7 @@ export const signin=async(req,res,next)=>{
             return next(errorHandler(400,"Invalid Password"));
         }
 
-        const token=jwt.sign(
+        const token=Jwt.sign(
             {id:validUser._id},process.env.JWT_SECRET
         )
 
